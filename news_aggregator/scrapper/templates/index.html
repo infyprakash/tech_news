@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-2 no-float "></div>
+        
+        <div class="col-md-8 no-float overflow-auto">
+            
+            {% for article in data %}
+            <div class="card">
+                <img class="card-img-top img-responsive" src="{{article.media}}" alt="" style="width: 100%;height:auto;">
+                <div class="card-body">
+                    <h3 class="card-title lead"><a href="{{article.link}}" target="_blank">{{article.title}}</a></h3>
+                    <p><small><a href="{{article.link}}" target="_blank">cnet &nbsp;</a> | {{article.pubdate}}</small></p>
+                    <p class="card-text">{{article.description | safe}}</p>
+                </div>
+            </div>
+            <hr>
+            {% empty %}
+            <p>no news</p>
+            {% endfor %}
+
+        </div>
+
+        <div class="col-md-2 no-float bg-dark"></div>
+    </div>
+</div>
+{% endblock %}
